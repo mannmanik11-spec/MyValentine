@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Be My Valentine ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ffd1dc, #ffe6f0);
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 24px;
+      text-align: center;
+      width: 90%;
+      max-width: 340px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 18px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #e63946;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 25px;
+      color: #444;
+    }
+
+    button {
+      padding: 12px 22px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 8px;
+    }
+
+    #yesBtn {
+      background-color: #e63946;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #f1f1f1;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card" id="card">
+    <img src="us.jpg" alt="Us together">
+
+    <h1>Will you be my Valentine? ❤️</h1>
+    <p>I made this just for you(try pressing no)</p>
+
+    <button id="yesBtn" onclick="yesClicked()">Yes 💕</button>
+    <button id="noBtn">No 😅</button>
+  </div>
+
+  <script>
+    function yesClicked() {
+      document.getElementById("card").innerHTML = `
+        <img src="love.jpg" alt="Love">
+        <h1>YAY!!! 💖</h1>
+        <p>You just made me the happiest person ever.</p>
+        <p>Happy Valentine’s Day 🥰</p>
+      `;
+    }
+
+    const noBtn = document.getElementById("noBtn");
+
+    function moveButton() {
+      const card = document.getElementById("card");
+      const maxX = card.clientWidth - noBtn.offsetWidth;
+      const maxY = card.clientHeight - noBtn.offsetHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+    }
+
+    noBtn.addEventListener("mouseenter", moveButton);
+    noBtn.addEventListener("touchstart", moveButton);
+    noBtn.addEventListener("click", moveButton);
+  </script>
+
+</body>
+</html>
